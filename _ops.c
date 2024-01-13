@@ -50,7 +50,7 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		}
 		a++;
 	}
-	printf("L%d: unknown instruction %s\n", linenum, token);
+	dprintf(2,"L%d: unknown instruction %s\n", linenum, token);
 	free_stk(stk, linenum);
 	exit(EXIT_FAILURE);
 }
