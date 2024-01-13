@@ -85,7 +85,7 @@ int check_digit(char *token)
 	if (token == NULL)
 		return (0);
 
-	if(*token == '-')
+	if (*token == '-')
 		token++;
 	while (*token != '\0')
 	{
@@ -93,6 +93,6 @@ int check_digit(char *token)
 			return (0);
 		token++;
 	}
-        token++;	
+	token++;
 	return (1);
 }
