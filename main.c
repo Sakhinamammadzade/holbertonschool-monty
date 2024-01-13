@@ -7,50 +7,36 @@
  * Return: Always EXIT_SUCCESS.
  */
 
-int main(int argc, char *argv[0])
+int main(int argc, char *argv[])
 {
-if (argc != 2)
-{
-fprintf(stderr, "Usage :%s <filename>\n", argv[0]);
-exit(EXIT_FAILURE);
-}
+	FILE *file;
+	char *line = NULL;
+	size_t len = 0, line_number = 0;
+	stack_t *stack = NULL;
+	instruction_t instructions[] = {
+		{"push", push}, {"pall", pall}, {NULL, NULL}
+	};
 
-execute_file(argv[1]);
-return (EXIT_SUCCESS);
-}
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE); }
 
-/**
- *execute_file - file execute
- @filename: pointer
- *Return: EXIT_SUCCESS or EXIT_FAILURE
- */
-void execute_file(char *filename)
-{
-FILE *file = fopen(filename, "r");
-if (!file)
-{
-fprinf(stderr, "Error: Can't open file %s\n", filename);
-exit(EXIT_FAILURE);
-char *line = NULL;
-size_t len = 0;
-unsigned int line_number = 0;
-while (getline(&line, &len, file) != -1)
-{
-line_number++;
-char *token = strtok(line, "$$");
-while (token != NULL)
-{
-if (strcmp(token, "push 1") == 0)
-{
-push(&global_stack, 1);
-}
-else if (strcmp(token, "push 2") == 0)
-{
-push(&global_stack, 2);
-}
-token = strtok(NULL, "$$");
-}
-}
-free(line);
-fclose(file);
+	file = fopen(argv[1], "r");
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE); }
+
+	while (getline(&line, &len, file) != -1)
+	{
+		line_number++;
+		run_instruction(line, &stack, instructions, line_number);
+	}
+
+	free_stack(stack);
+
+	free(line);
+	fclose(file);
+	return (EXIT_SUCCESS);
 }
