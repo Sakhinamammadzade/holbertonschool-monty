@@ -101,3 +101,22 @@ void pint(stack_t **stk, unsigned int linenum)
 		printf("%d\n", (*stk)->n);
 }
 
+/**
+ * swap - swapping first two elements on top of stack
+ * @stk: stack
+ * @linenum: line number
+ * Return: void
+ */
+void swap(stack_t **stk, unsigned int linenum)
+{
+	int temp;
+	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
+	{
+		dprintf(2, "L%d: can't swap, stack too short\n", linenum);
+		free_stk(stk, linenum);
+		exit(EXIT_FAILURE);
+	}
+	temp = (*stk)->n;
+	(*stk)->n = (*stk)->next->n;
+	(*stk)->next->n = temp;
+}
