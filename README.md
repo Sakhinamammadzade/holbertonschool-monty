@@ -39,7 +39,7 @@
 -   [Here is a link to a GitHub repository](https://intranet.hbtn.io/rltoken/Jld0fesbZbMXmOgejF3dBA "Here is a link to a GitHub repository")  that could help you making sure your errors are printed on  `stderr`
 
 #
-##  The Monty language
+##  Monty language
 
 > Monty 0.98 is a scripting language that is first compiled into Monty
 > byte codes (Just like Python). It relies on a unique stack, with
