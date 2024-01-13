@@ -28,19 +28,13 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 	if (strcmp(token, "queue") == 0)
 	{
 		variables.check = 1;
-	
 		return;
 	}
-	
-
-	
-
 	if (variables.check == 1 && strcmp(token, "push") == 0)
 	{
 		_queue(stk, linenum);
 		return;
 	}
-  
 	while (op[a].opcode != NULL)
 	{
 		if (strcmp(token, op[a].opcode) == 0)
@@ -50,7 +44,7 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		}
 		a++;
 	}
-	dprintf(2,"L%d: unknown instruction %s\n", linenum, token);
+	dprintf(2, "L%d: unknown instruction %s\n", linenum, token);
 	free_stk(stk, linenum);
 	exit(EXIT_FAILURE);
 }
