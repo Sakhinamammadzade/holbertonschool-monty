@@ -55,9 +55,11 @@ void _tokenizer(char *string, stack_t **stk, unsigned int linenum)
 	char *token;
 	char *tokens;
 
-	token = strtok(string, " ");
-	if (token == NULL || *token == ' ' || *token == '\n' || *token == '#')
+	token  = strtok(string, " \n");
+	if(token == NULL  || *token== ' ' || *token == '\n' || *token == '#')
 		return;
+	
+
 	if (strcmp(token, "push") == 0)
 	{
 		tokens = token;
@@ -81,10 +83,12 @@ void _tokenizer(char *string, stack_t **stk, unsigned int linenum)
  * Return: 1 if number, 0 if not
  */
 int check_digit(char *token)
-{
+{       
+
 	if (token == NULL)
 		return (0);
-	if (*token == '-')
+
+	if(*token == '-')
 		token++;
 	while (*token != '\0')
 	{
@@ -92,6 +96,6 @@ int check_digit(char *token)
 			return (0);
 		token++;
 	}
-	token++;
+        token++;	
 	return (1);
 }
