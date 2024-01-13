@@ -35,7 +35,6 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		_queue(stk, linenum);
 		return;
 	}
-  
 	while (op[a].opcode != NULL)
 	{
 		if (strcmp(token, op[a].opcode) == 0)
