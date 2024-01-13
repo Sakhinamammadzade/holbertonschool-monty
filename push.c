@@ -1,26 +1,34 @@
 #include "monty.h"
-#include <stdlib.h>
+
 /**
- * push - pushes an element to the stack.
- * @stack : pointer to structure
- * @line_number :Parse the argument from the line
- * Return: Always EXIT_SUCCESS.
+ * push - adds to the beginning of the stack
+ * @stk: top of stack
+ * @linenum: line number for the passed token
+ * Return: void
  */
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stk, unsigned int linenum)
 {
-int value;
-if (scanf("%d", &value) != -1)
-{
-fprintf(stderr, "L%d: usage : push integer\n", line_number);
-exit(EXIT_FAILURE);
-}
-stack_t *new_node = malloc(sizeof(stack_t));
-if (!new_node)
-{
-fprintf(stderr, "Error : malloc failed\n");
-exit(EXIT_FAILURE);
-}
-new_node->n = value;
-new_node->next = *stack;
-*stack = new_node;
+	stack_t *new;
+
+	if (stk == NULL)
+	{
+		printf("L%d: unknown stack\n", linenum);
+		exit(EXIT_FAILURE);
+	}
+
+	new = malloc(sizeof(stack_t));
+
+	if (new == NULL)
+	{
+		printf("Error: malloc failed\n");
+		free_stack(stk, linenum);
+		exit(EXIT_FAILURE);
+	}
+	new->n = variables.holder;
+	new->prev = NULL;
+	new->next = *stk;
+
+	if (*stk != NULL)
+		(*stk)->prev = new;
+	*stk = new;
 }

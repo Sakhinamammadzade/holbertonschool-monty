@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	fclose(file);
 	free(buff);
 	if (stk != NULL)
-		free_stk(&stk, linenum);
+		free_stack(&stk, linenum);
 	return (EXIT_SUCCESS);
 }
 
@@ -65,7 +65,7 @@ void _tokenizer(char *string, stack_t **stk, unsigned int linenum)
 		if (!check_digit(token))
 		{
 			printf("L%d: usage: push integer\n", linenum);
-			free_stk(stk, linenum);
+			free_stack(stk, linenum);
 			exit(EXIT_FAILURE);
 		}
 		variables.holder = atoi(token);
