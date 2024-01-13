@@ -28,7 +28,6 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 	if (strcmp(token, "queue") == 0)
 	{
 		variables.check = 1;
-	
 		return;
 	}
 	
