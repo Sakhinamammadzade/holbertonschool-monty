@@ -7,6 +7,18 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <stdarg.h>
+
+typedef struct var
+{
+	int holder;
+	char check;
+}var_t;
+
+extern var_t variables;
+var_t variables;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,19 +51,25 @@ typedef struct instruction_s
 } instruction_t;
 
 
-void run_instruction(char *line, stack_t **stack,
-instruction_t *instructions, unsigned int line_number);
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t *stack);
-int is_number(char *arg);
+void _tokenizer(char *string, stack_t **stk, unsigned int linenum);
+void free_stack(stack_t **stk, unsigned int linenum);
+int check_digit(char *token);
+void _ops(char *token, stack_t **stk, unsigned int linenum);
+void push(stack_t **stack, unsigned int linenum);
+void pall(stack_t **stack, unsigned int linenum);
+void pint(stack_t **stack, unsigned int linenum);
+void pop(stack_t **stack, unsigned int linenum);
+void swap(stack_t **stack, unsigned int linenum);
+void add(stack_t **stack, unsigned int linenum);
+void nop(stack_t **stack, unsigned int linenum);
+void sub(stack_t **stack, unsigned int linenum);
+void _div(stack_t **stack, unsigned int linenum);
+void mul(stack_t **stack, unsigned int linenum);
+void mod(stack_t **stk, unsigned int linenum);
+void pchar(stack_t **stk, unsigned int linenum);
+void pstr(stack_t **stk, unsigned int linenum);
+void rotl(stack_t **stk, unsigned int linenum);
+void rotr(stack_t **stk, unsigned int linenum);
+void _queue(stack_t **stk, unsigned int linenum);
 
 #endif

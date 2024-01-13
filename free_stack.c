@@ -1,24 +1,15 @@
 #include "monty.h"
 
 /**
- * free_stack - a function that frees all dynamically
- * allocated memory associated with a stack.
- *
- * @stack: pointer to the stack
- *
+ * free_stk - function to free stack
+ * @stk: stack
+ * @linenum: line number
+ * Return: void
  */
-
-void free_stack(stack_t *stack)
+void free_stk(stack_t **stk, unsigned int linenum)
 {
-	stack_t *curr = NULL, *temp = NULL;
-
-	curr = stack;
-
-	while (curr != NULL)
-	{
-		temp = curr;
-		curr = curr->next;
-		free(temp);
-	}
-	stack = NULL;
+	if (stk == NULL)
+		return;
+	while (*stk != NULL)
+		pop(stk, linenum);
 }
