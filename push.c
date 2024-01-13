@@ -21,7 +21,7 @@ void push(stack_t **stk, unsigned int linenum)
 	if (new == NULL)
 	{
 		printf("Error: malloc failed\n");
-		free_stack(stk, linenum);
+		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}
 	new->n = variables.holder;

@@ -16,17 +16,6 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
 		{NULL, NULL}
 	};
 
@@ -58,7 +47,7 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		a++;
 	}
 	printf("L%d: unknown instruction %s\n", linenum, token);
-	free_stack(stk, linenum);
+	free_stk(stk, linenum);
 	exit(EXIT_FAILURE);
 }
 
