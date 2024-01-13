@@ -112,7 +112,7 @@ void swap(stack_t **stk, unsigned int linenum)
 	int temp;
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
 	{
-		printf(2, "L%d: can't swap, stack too short\n", linenum);
+		dprintf(2, "L%d: can't swap, stack too short\n", linenum);
 		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}
