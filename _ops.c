@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * _ops - compare functions to tokens and executes them
  * @token: command recieved
@@ -33,10 +32,10 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		variables.check = 1;
 		return;
 	}
-	if(strcmp(token, "swap") == 0)
+	if (strcmp(token, "swap") == 0)
 	{
-	       swap(stk,linenum);
-	       return;
+		swap(stk, linenum);
+		return;
 	}
 	if (variables.check == 1 && strcmp(token, "push") == 0)
 	{
@@ -57,15 +56,3 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 	exit(EXIT_FAILURE);
 }
 
-/**
- * nop - function does nothing
- * @stk: stack
- * @linenum: line number
- * Return: void
- */
-void nop(stack_t **stk, unsigned int linenum)
-{
-	(void)stk;
-	(void)linenum;
-	/* No operation */
-}
