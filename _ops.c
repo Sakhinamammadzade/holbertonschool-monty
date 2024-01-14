@@ -64,4 +64,5 @@ void nop(stack_t **stk, unsigned int linenum)
 {
 	(void)stk;
 	(void)linenum;
+	/* No operation */
 }
