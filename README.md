@@ -1,55 +1,57 @@
-# C - Stacks, Queues - LIFO, FIFO!
+# Monty Language Interpreter
+## About
+- This is an introductory project that explains:
+- What do LIFO and FIFO mean
+- What is a stack, and when to use it
+- What is a queue, and when to use it
+- What are the common implementations of stacks and queues
+- What are the most common use cases of stacks and queues
+- What is the proper way to use global variables
+- How to work with git submodules
+---
 
-#
-## Overview
- 
- **In this project, we have created a simple interpreter for Monty ByteCodes. The interpreter reads a bytecode file and executes the bytecode commands.**
+## Requirements
+- Ubuntu 20.04 LTS
+- gcc version 9.4.0 flags: -Wall -Werror -Wextra and -pedantic
+---
 
-#
-## Table of Contents
-- [Requirements](#requirements)
-- [Compilation & Output](#compilation--output)
-- [Monty Language](#monty-language)
+## Installation
+1. Clone the repository
+`https://github.com/fatimasgit/holbertonschool-monty`
 
-#
-## Requirements:
+2. Compile the program
+`gcc -Wall -Werror -Wextra -pedantic *.c -o monty`
 
--   Allowed editors:  `vi`,  `vim`,  `emacs`
--   All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic
--   All your files should end with a new line
--   A  `README.md`  file, at the root of the folder of the project is mandatory
--   Your code should use the  `Betty`  style. It will be checked using  [betty-style.pl](https://github.com/hs-hq/Betty/blob/master/betty-style.pl "betty-style.pl")  and  [betty-doc.pl](https://github.com/hs-hq/Betty/blob/master/betty-doc.pl "betty-doc.pl")
--   You allowed to use a maximum of one global variable
--   No more than 5 functions per file
--   You are allowed to use the C standard library
--   The prototypes of all your functions should be included in your header file called  `monty.h`
--   Don’t forget to push your header file
--   All your header files should be include guarded
--   You are expected to do the tasks in the order shown in the project
+3. Run the program as follows:
+- Usage: `monty <file.m>`
+- Ex: `./monty ./bytecodes/00.m`
 
-#
-##  Compilation & Output
- **- Your code will be compiled this way:**
+There are multiple `.m` files to choose from in the bytcodes files that run different Opcode functionality. Below is a table of all the Opcode options. Each file in the bytcodes folder contains different Opcodes that run their specific functionality.
 
-    ```$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty```
-    
+| Opcode Name   | Opcode Description |
+| :-----------: | :------------------- |
+| push          | *pushes an element on to the stack* |
+| pall          | *prints all the values on the stack, starting from the top* |
+| pint          | *prints the value at the top of the stack* |
+| pop           | *removes the top element of the stack* |
+| swap          | *swaps the top two elements of the stack* |
+| add           | *adds the top two elements of the stack* |
+| nop           | *doesn't do anything* |
+| sub           | *subtracts the top element of the stack from the second top element of the stack* |
+| div           | *divides the second top element of the stack by the top element of the stack* |
+| mul           | *multiplies the second top element of the stack with the top element of the stack* |
+| mod           | *computes the modulus of the second top element of the stack by the top element of the stack* |
+| comments (#)  | *add a # to the beginning of the line to comment in the file* |
+| pchar         | *prints the ASCII equivalent of the number at the top of the stack* |
+| pstr          | *prints the ASCII equivalent of the numbers stored in each element in the stack, starting from the top* |
+| rotl          | *rotates the top element of the stack to the bottom of the stack* |
+| rotr          | *rotates the bottom element of the stack to the top of the stack* |
 
--   Any output must be printed on  `stdout`
--   Any error message must be printed on  `stderr`
--   [Here is a link to a GitHub repository](https://intranet.hbtn.io/rltoken/Jld0fesbZbMXmOgejF3dBA "Here is a link to a GitHub repository")  that could help you making sure your errors are printed on  `stderr`
+---
 
-#
-##  Monty language
-
-> Monty 0.98 is a scripting language that is first compiled into Monty
-> byte codes (Just like Python). It relies on a unique stack, with
-> specific instructions to manipulate it. The goal of this project is to
-> create an interpreter for Monty ByteCodes files.
-****Monty byte code files****
-Files containing Monty byte codes usually have the `.m` extension. Most of the industry uses this standard but it is not required by the specification of the language. There is not more than one instruction per line. 
-There can be any number of spaces before or after the opcode and its argument:
-````
-julien@ubuntu:~/monty$ cat -e bytecodes/000.m
+## Example
+```
+$ cat -e bytecodes/000.m
 push 0$
 push 1$
 push 2$
@@ -59,5 +61,34 @@ push 4$
     push 5    $
       push    6        $
 pall$
-julien@ubuntu:~/monty$
-````
+$ ./monty ./bytecodes/000.m
+3
+2
+1
+0
+6
+5
+4
+3
+2
+1
+0
+$
+---
+```
+## Other files
+
+- monty.h - *Header file; Contains function, struct and global variable declarations*
+- bytecodes - *A directory containing test files used while making this program*
+---
+   
+### Technologies Used
+* Language: C
+* Operating System: gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1) (Trusty64)
+* Style: [Betty](https://github.com/holbertonschool/Betty)
+* Compiler: GCC
+---
+
+### Author
+<a href = "https://github.com/Sakhinamammadzade">Sakina Mammadzade</a>
+<a href = "https://github.com/fatimasgit"> Fatima Mammadova</a>
