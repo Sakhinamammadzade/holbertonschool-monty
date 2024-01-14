@@ -32,7 +32,7 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 	}
 	if(strcmp(token, "swap") == 0)
 	{
-	       swap(**stk,linenum);
+	       swap(stk,linenum);
 	       return;
 	}
 	if (variables.check == 1 && strcmp(token, "push") == 0)
