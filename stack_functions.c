@@ -12,7 +12,7 @@ void push(stack_t **stk, unsigned int linenum)
 
 	if (stk == NULL)
 	{
-		dprintf(2,"L%d: unknown stack\n", linenum);
+		dprintf(2, "L%d: unknown stack\n", linenum);
 		exit(EXIT_FAILURE);
 	}
 
@@ -20,7 +20,7 @@ void push(stack_t **stk, unsigned int linenum)
 
 	if (new == NULL)
 	{
-		dprintf(2,"Error: malloc failed\n");
+		dprintf(2, "Error: malloc failed\n");
 		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}
@@ -45,7 +45,7 @@ void pall(stack_t **stk, unsigned int linenum)
 
 	if (stk == NULL)
 	{
-		dprintf(2,"L%d: invalid stack\n", linenum);
+		dprintf(2, "L%d: invalid stack\n", linenum);
 		exit(EXIT_FAILURE);
 	}
 
@@ -68,7 +68,7 @@ void pop(stack_t **stk, unsigned int linenum)
 {
 	if (stk == NULL || *stk == NULL)
 	{
-		dprintf(2,"L%d: can't pop an empty stack\n", linenum);
+		dprintf(2, "L%d: can't pop an empty stack\n", linenum);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stk)->next != NULL)
@@ -95,12 +95,11 @@ void pint(stack_t **stk, unsigned int linenum)
 {
 	if (stk == NULL || *stk == NULL)
 	{
-		dprintf(2,"L%d: can't pint, stack empty\n", linenum);
+		dprintf(2, "L%d: can't pint, stack empty\n", linenum);
 		exit(EXIT_FAILURE);
 	}
 		printf("%d\n", (*stk)->n);
 }
-
 /**
  * swap - swapping first two elements on top of stack
  * @stk: stack
@@ -110,9 +109,10 @@ void pint(stack_t **stk, unsigned int linenum)
 void swap(stack_t **stk, unsigned int linenum)
 {
 	int temp;
+
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
 	{
-		dprintf(2,"L%d: can't swap, stack too short\n", linenum);
+		dprintf(2, "L%d: can't swap, stack too short\n", linenum);
 		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}
