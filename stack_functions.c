@@ -71,7 +71,7 @@ void pop(stack_t **stk, unsigned int linenum)
 		dprintf(2,"L%d: can't pop an empty stack\n", linenum);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stk)->next != NULL)
+	if ((*stk)->next != NULL)
 	{
 		*stk = (*stk)->next;
 		variables.holder = (*stk)->n;
@@ -112,7 +112,7 @@ void swap(stack_t **stk, unsigned int linenum)
 	int temp;
 	if (stk == NULL || *stk == NULL || (*stk)->next == NULL)
 	{
-		dprintf(2, "L%d: can't swap, stack too short\n", linenum);
+		dprintf(2,"L%d: can't swap, stack too short\n", linenum);
 		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}

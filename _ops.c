@@ -30,6 +30,11 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		variables.check = 1;
 		return;
 	}
+	if(strcmp(token, "swap") == 0)
+	{
+	       swap(**stk,linenum);
+	       return;
+	}
 	if (variables.check == 1 && strcmp(token, "push") == 0)
 	{
 		_queue(stk, linenum);
