@@ -18,7 +18,7 @@ void _queue(stack_t **stk, unsigned int linenum)
 
 	if (new == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "L%d: Error: malloc failed\n", linenum);
 		free_stk(stk, linenum);
 		exit(EXIT_FAILURE);
 	}

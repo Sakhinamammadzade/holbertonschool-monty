@@ -20,13 +20,11 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 		{"nop", nop},
 		{NULL, NULL}
 	};
-
 	if (strcmp(token, "stack") == 0)
 	{
 		variables.check = 0;
 		return;
 	}
-
 	if (strcmp(token, "queue") == 0)
 	{
 		variables.check = 1;
@@ -55,4 +53,3 @@ void _ops(char *token, stack_t **stk, unsigned int linenum)
 	free_stk(stk, linenum);
 	exit(EXIT_FAILURE);
 }
-
